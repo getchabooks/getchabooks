@@ -1,0 +1,9 @@
+url = document.URL;
+mwhite = "getchagb.com/mwhite";
+mwalker = "getchagb.com/mwalker";
+rmondello = "getchagb.com/rmondello";
+getchabooks = "getchabooks.com";
+url = url.replace(rmondello, mwhite);
+url = url.replace(mwalker, mwhite);
+url = url.replace(getchabooks, mwhite);
+window.location = url;

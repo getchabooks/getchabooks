@@ -1,0 +1,215 @@
+<database name="gbpropel" defaultIdMethod="native" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://svn.propelorm.org/branches/1.5/generator/resources/xsd/database.xsd">
+
+	<!-- behaviors applied to all tables -->
+
+	<!-- add an auto-incrementing primary key 'id' if one doesn't already exist -->
+	<behavior name="auto_add_pk" />
+
+	<!-- add created_at and updated_at -->
+	<behavior name="timestampable" />
+
+	<!-- allow the DB name to be specified at runtime -->
+	<behavior name="custom_db">
+		<parameter name="original_name" value="gbpropel" />
+		<parameter name="db_name_constant" value="GB_DATABASE" />
+	</behavior>
+
+<!-- Campus must come before school because the aggregate_column behavior
+		 requires a foreign key to be defined, and that is done in the Spiderable
+		 behavior instead of the XML. -->
+<table name="campus">
+	<behavior name="spiderable">
+		<parameter name="parent" value="school" />
+	</behavior>
+	<column name="shallow_spidered_at" type="timestamp" />
+	<column name="name"/>
+
+	<column name="slug"/>
+</table>
+
+<table name="school">
+	<!-- add b_id (bookstore id), spidered_at, touched (for tracking during
+			 spidering), and bookstore_type> -->
+	<behavior name="spiderable" />
+	<column name="shallow_spidered_at" type="timestamp"
+		description="Last time of spidereding completely down to department-awareness." />
+
+	<column name="enabled" type="boolean" defaultValue="1"
+		description="Whether the school should be shown in the index selector and
+		allow selection and results to be reached."/>
+
+	<column name="name" required="true" primaryString="true"
+		description="The full	name of the school, like 'Tufts University'."/>
+
+	<column name="short_name"
+		description="The name commonly used to refer to the	school, like 'Tufts'." />
+
+	<column name="slug"
+		description="The school's slug for URLs on our site."/>
+
+	<column name="state" size="2"
+		description="The state the school is located in."/>
+
+	<column name="zip" size="5"
+		description="The school's zip code."/>
+
+	<column name="local_tax" type="decimal" size="5" scale="2" defaultValue="NULL"
+		description="The local tax rate (e.g. 6.25), which overrides the state tax
+		rate if set."/>
+
+	<column name="amazon_tag"
+		description="The default Amazon referral tag for this school."/>
+
+	<column name="subdomain"
+		description="The school's subdomain on its bookstore site, or other
+		uniquely identifying information."/>
+
+	<column name="depts_to_ignore"
+		description="A comma-separated list of departments to exclude from
+		spidering and display, i.e. bad data."/>
+
+
+	<column name="nb_campuses" type="integer" />
+	<behavior name="aggregate_column">
+		<parameter name="name" value="nb_campuses" />
+		<parameter name="foreign_table" value="campus" />
+		<parameter name="expression" value="COUNT(id)" />
+	</behavior>
+
+</table>
+
+<table name="term">
+	<behavior name="spiderable">
+		<parameter name="parent" value="campus" />
+	</behavior>
+	<column name="shallow_spidered_at" type="timestamp" />
+	<column name="name" required="true" />
+
+	<column name="slug" required="true" />
+	<column name="status" type="integer" defaultValue="-1"
+		description="Guess as to the timeframe. -1 = past, 0 = current (only one),
+		1 = future" /> 
+
+	<column name="has_course_info" type="boolean" defaultValue="0" 
+		description="Whether we have extra metadata for depts, courses, and
+		sections in this term."/>
+</table>
+
+<table name="dept">
+	<behavior name="spiderable">
+		<parameter name="parent" value="term" />
+	</behavior>
+	<column name="abbr" required="true" />
+
+	<!-- External metadata -->
+	<column name="name" />
+</table>
+
+<!-- Section must come before course for the same reason as campus and school -->
+<table name="section">
+	<behavior name="spiderable">
+		<parameter name="parent" value="course" />
+	</behavior>
+	<column name="num" required="true" />
+	<column name="requires_books" type="boolean" defaultValue="1"
+		description="Whether it's not the case that this section explicitly doesn't
+		require any books."/>
+
+	<column name="name"
+		description="The full name of the section, like 'COMP20: Web Programming (Chow)'"/>
+
+	<column name="slug" />
+	<column name="school_slug" />
+	<column name="campus_slug" />
+	<column name="term_slug" />
+
+	<!-- follett id.  not used for unique identification during spidering -->
+	<column name="f_id" />
+
+	<column name="nb_items" type="integer" defaultValue="0" />
+	<behavior name="aggregate_column">
+		<parameter name="name" value="nb_items" />
+		<parameter name="foreign_table" value="section_has_item" />
+		<parameter name="expression" value="COUNT(id)" />
+	</behavior>
+
+	<!-- external metadata -->
+	<column name="professor" />
+</table>
+
+<table name="course">
+	<behavior name="spiderable">
+		<parameter name="parent" value="dept" />
+	</behavior>
+	<column name="num" required="true" />
+
+	<column name="nb_sections" type="integer" />
+	<behavior name="aggregate_column">
+		<parameter name="name" value="nb_sections" />
+		<parameter name="foreign_table" value="section" />
+		<parameter name="expression" value="COUNT(id)" />
+	</behavior>
+
+	<!-- External metadata -->
+	<column name="name" />
+</table>
+
+<table name="item">
+	<behavior name="spiderable" />
+
+  <!-- required, see https://github.com/propelorm/Propel/issues/84 -->
+	<column name="id" type="integer" required="true" primaryKey="true" autoIncrement="true" />
+
+	<foreign-key foreignTable="book" onDelete="SETNULL">
+		<reference local="isbn" foreign="isbn" />
+	</foreign-key>
+	<foreign-key foreignTable="item" onDelete="CASCADE">
+		<reference local="package_id" foreign="id" />
+	</foreign-key>
+	<column name="isbn" size="13" />
+	<column name="package_id" type="integer" required="false" />
+	<column name="is_package" type="boolean" defaultValue="false" />
+	<column name="title" />
+	<column name="author" />
+	<column name="edition" />
+	<column name="publisher" />
+	<column name="b_new" type="decimal" size="6" scale="2" />
+	<column name="b_used" type="decimal" size="6" scale="2" />
+	<column name="b_ebook" type="decimal" size="6" scale="2" />
+	<column name="image_url" />
+
+	<column name="product_id" />
+	<column name="part_number" />
+</table>
+
+<table name="section_has_item" isCrossRef="true">
+	<behavior name="spiderable" />
+
+	<foreign-key foreignTable="section" onDelete="CASCADE">
+		<reference local="section_id" foreign="id"/>
+	</foreign-key>
+	<foreign-key foreignTable="item" onDelete="CASCADE">
+		<reference local="item_id" foreign="id"/>
+	</foreign-key>
+	<column name="section_id" type="integer" required="true" />
+	<column name="item_id" type="integer" required="true" />
+	<!-- 0=bookstore recommended, 1=go to class first, 2=recommended, 3=required -->
+	<column name="required_status" type="smallint" defaultValue="0" />
+</table>
+
+<!-- Vendor-side data -->
+<table name="book">
+	<column name="isbn" size="13" />
+	<column name="title" defaultValue=""/>
+	<column name="author" />
+	<column name="publisher" />
+	<column name="edition" />	<!-- the edition string, whatever -->
+	<column name="edition_num" /> <!-- the extracted edition number, for when we eventually want to offer the ability to choose previous editions -->
+	<column name="pubdate" />
+	<column name="is_paperback" type="boolean" defaultValue="0"/>
+	<column name="image_url" />
+	<unique>
+		<unique-column name="isbn" />
+	</unique>
+</table>
+</database>

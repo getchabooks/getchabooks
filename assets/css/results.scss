@@ -1,0 +1,420 @@
+@import "utils";
+@import "constants";
+
+#top, .course, .share a {
+  color: #535353;
+  text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.4); }
+
+table, tr, th, td {
+  margin: 0;
+  padding: 0; }
+
+#instructions {
+  margin: 10px 10px 0 10px;
+  font-size: 1.3em; }
+
+.pointer {
+  cursor: pointer; }
+
+/* Automatically hidden, later shown by jQuery. */
+
+#top {
+  div, table {
+    display: none; }
+  button {
+    right: 7px;
+    margin-top: 7px;
+  }
+}
+
+button, #headerTable tr td, #instructions, #initialOverviewText, #bestDealBookstore {
+  display: none; }
+
+/* Table cell states: */
+
+td {
+  &.rowHighlight.best {
+    @include gradient($gb-cell-green-hover-top, $gb-cell-green-hover-bottom); }  
+  &.cellHighlight.best {
+    @include gradient($gb-cell-green-hover-top, $gb-cell-green-hover-bottom); } } 
+
+.rowHighlight { @include gradient($gb-cell-gray-light-top, $gb-cell-gray-light-bottom); }
+.headerHighlight { background: #EAC472 !important; }
+.cellHighlight { @include gradient($gb-cell-gray-dark-top, $gb-cell-gray-dark-bottom); }
+td.best { @include gradient($gb-cell-green-top, $gb-cell-green-bottom); }
+
+.course {
+  td, th {
+    cursor: pointer; } }
+
+#totals td {
+  cursor: pointer; }
+
+.course th:hover {
+  background: #f0f0f0 !important; }
+
+/* All tables on the page. */
+
+table {
+  border-spacing: 0px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  width: 900px;
+  a {
+    table-layout: fixed; }
+  th {
+    width: 300px !important;
+    /* was 272px */
+    font-weight: normal;
+    cursor: pointer;
+    table-layout: fixed;
+    text-align: left; }
+  td {
+    border-left: 1px solid #AAAAAA;
+    border-right: 1px solid #AAAAAA;
+    text-align: center;
+    font-size: 1.2em;
+    width: 100px !important;
+    /* was 100px, then was 119px */
+    padding: .75em 0;
+    border-spacing: 0;
+    table-layout: fixed; } }
+
+td {
+  &:hover a {
+    text-decoration: underline; }
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #282fb5;
+    &:visited {
+      display: block;
+      width: 100%;
+      height: 100%;
+      color: #282fb5; } } }
+
+table {
+  td.empty {
+    cursor: default !important; }
+  &.vendor4 {
+    th {
+      width: 338px !important; }
+    td {
+      width: 140px !important; } }
+  &.vendor5 {
+    th {
+      width: 300px !important; }
+    td {
+      width: 119px !important; } }
+  &.vendor6 {
+    th {
+      width: 272px !important; }
+    td {
+      width: 100px !important; } } }
+
+/* Package components. */
+
+.packageComponent {
+  padding-left: 20px; }
+
+/* Specifically, the table with the vendor names. */
+
+#headerTable {
+  display: table !important;
+  margin-top: 12px;
+  margin-left: -7px;
+  margin-right: 0;
+  padding-right: 0;
+  width: 900px;
+  tr {
+    height: 50px;
+    border: 0;
+    padding: 0;
+    th {
+      cursor: default;
+      padding-right: 0;
+      padding-left: 0px;
+      margin: 0;
+      button {
+        margin-left: 17px; } }
+    td {
+      border: 0;
+      border-left: 1px solid transparent;
+      border-right: 1px solid transparent;
+      padding: 0;
+      text-align: center;
+      font-size: 12pt;
+      -webkit-border-top-left-radius: 10px;
+      -webkit-border-top-right-radius: 10px;
+      -moz-border-radius-topleft: 10px;
+      -moz-border-radius-topright: 10px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      &:hover { background: #EAC472; } } } }
+
+/* Specifically, the blank, derpy table. */
+
+#derpTable {
+  th {
+    padding-right: 1px;
+    cursor: default; }
+  td {
+    padding: 0;
+    margin: 0;
+    height: 10px;
+    cursor: default; } }
+
+#derpLine {
+  height: 10px;
+  border-right: 1px solid #aaaaaa;
+  margin-right: 15px; }
+
+/* Specifically, the totals. */
+
+#totals {
+  position: relative;
+  top: 0;
+  z-index: 100;
+  margin-top: 0;
+  th {
+    cursor: default !important; } }
+
+.minimetadata {
+  font-size: 0.8em;
+  &.important {
+    color: #BF5454; } }
+
+div.course {
+  margin: 0;
+  padding: 6px;
+  padding-top: 0px;
+  padding-left: 18px;
+  @include gradient($gb-cell-orange-top, $gb-cell-orange-bottom);
+  font-size: 1.2em;
+  border-top: 1px solid #CCB78A;
+  border-bottom: 1px solid #CCB78A;
+  div.text {
+    padding-top: 6px; } }
+
+/* General page layout. */
+
+#content {
+  margin: 0;
+  padding: 0;
+  table {
+    // box-sizing: border-box;
+    margin-right: 18px; } }
+
+#top {
+  position: relative;
+  top: 0;
+  z-index: 200; }
+
+#loading {
+  text-align: center;
+  float: center; }
+
+/* Tooltips */
+
+span.bookdata {
+  display: block;
+  margin-left: 18px;
+  margin-right: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px; }
+
+.specialmessage {
+  padding: 14px 20px 14px 20px;
+  font-size: 1.1em;
+  border-right: 1px solid #aaaaaa;
+  margin-right: 15px; }
+
+.bottomline {
+  border-top: 1px solid #ccc;
+  height: 10px;
+  width: 900px;
+  padding-bottom: 10px; }
+
+/* Lightbox. */
+
+#bookstoreLink {
+  cursor: default !important;
+  text-align: center;
+  color: #fbd583;
+  font-weight: bold;
+  font-size: 1.8em !important; }
+
+#lightbox {
+  .aBookstoreBook {
+    margin-top: 0;
+    margin-left: 2em !important;
+    /*font-size: 20px !important;*/
+    margin-top: 0;
+    margin-bottom: 0; }
+  p a {
+    	/*font-size: 29px;
+    	text-align: center;
+        margin-left:0 auto;
+        margin-right:0 auto;*/ }
+  .math {
+    width: 220px;
+    margin: auto;
+    clear: both;
+    .prices, .label {
+      display: inline-block;
+      height: 100%; }
+    .prices {
+      color: #d0fdc1;
+      font-size: 27px;
+      width: 110px; }
+    .label {
+      color: #FBD583;
+      font-size: 15px;
+      font-weight: bold;
+      width: 90px; }
+    .rightText {
+      padding-left: 10px;
+      text-align: left; }
+    .leftText {
+      text-align: right; }
+    .underline {
+      text-decoration: underline; } }
+  .bottom {
+    margin-bottom: 0; } }
+
+.bdp {
+  margin-bottom: 30px;
+  p {
+    margin: .25em 0 5px 0; }
+  .vendor, .aBookstoreBook {
+    /*font-size: 29px;*/
+    color: #d0fdc1;
+    font-weight: bold;
+    cursor: default !important; } }
+
+/* Link lightbox. */
+
+p.glorifiedLink {
+  border: 1px solid #FBD583;
+  padding: 6px; }
+
+input {
+  &.shortenedLink {
+    padding-left: 14px;
+    width: 210px;
+    margin-left: 160px;
+    margin-right: 7px; }
+  &.glorifiedLink {
+    padding: 6px;
+    width: 522px;
+    font-size: 1.2em;
+    background: #111111;
+    color: #fefefe;
+    border: 1px solid #FBD583;
+    &:focus {
+      outline: none;
+      box-shadow: none;
+      -moz-box-shadow: none;
+      -webkit-box-shadow: none; } } }
+
+.facebook img {
+  vertical-align: text-bottom;
+  width: 22px;
+  height: 22px;
+  margin-right: 7px; }
+
+.twitter {
+  img {
+    vertical-align: text-bottom;
+    width: 22px;
+    height: 22px;
+    margin-right: 7px; }
+  margin-left: 15px; }
+
+.courseShare {
+  margin-top: 5px; }
+
+.center {
+  margin: auto;
+  text-align: center; }
+
+#warning {
+  height: 16px;
+  width: 16px; }
+
+.warning {
+  font-size: 16px !important; }
+
+.share {
+  float: right;
+  margin-right: 14px;
+  margin-top: 4px;
+  height: 100%;
+  cursor: pointer;
+  span {
+    padding-right: 0px;
+    font-size: 18px; } }
+
+div.course {
+  padding-right: 0px; }
+
+.save {
+  position: absolute;
+  right: 0;
+  width: 184px;
+  /* used to be 170. Linux FF. */
+  img {
+    width: 18px;
+    height: 18px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    vertical-align: top;
+    display: inline; } }
+
+#simple {
+  width: 240px;
+  /* ideal number is 230. Linux FF. */ }
+
+span.bookmark {
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline; } }
+
+#fbfanpage {
+  /*	margin-top: 40px;*/
+  border: none;
+  overflow: hidden;
+  width: 240px;
+  height: 70px; }
+
+span.friendShareLabel {
+  width: 170px;
+  margin-bottom: 10px;
+  text-align: left;
+  display: inline-block; }
+
+div.bdp button {
+  width: 70px !important;
+  margin-left: 30px; }
+
+button.outgoing {
+  margin: auto !important;
+  width: 80px !important;
+  margin-top: 30px !important;
+  margin-bottom: 0px !important; }
+
+/* Touch hacks! */
+
+.touch {
+  #main {
+    min-height: 530px; }
+  #content {
+    min-height: 400px;
+    padding-top: 10px; }
+  .save {
+    width: 200px; }
+  #derpTable, #derpLine {
+    display: none; } }

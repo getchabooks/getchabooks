@@ -1,0 +1,10 @@
+
+propel.output.dir = ${propel.project.dir}
+
+propel.database = mysql
+propel.database.url = mysql:dbname=gbprod;host=localhost
+propel.database.user = user
+propel.database.password = password
+
+propel.behavior.spiderable.class = ${propel.project.dir}.behaviors.SpiderableBehavior
+propel.behavior.custom_db.class = ${propel.project.dir}.behaviors.CustomDbBehavior

@@ -1,0 +1,12 @@
+<schools>
+	<school>
+		<Name>Harvard University</Name>
+		<ShortName>Harvard</ShortName>
+		<Slug>harvard</Slug>
+		<State></State>
+		<Zip></Zip>
+		<LocalTax>6.25</LocalTax>
+		<Subdomain>harvardcoopbooks</Subdomain>
+		<BId>52084</BId>
+	</school>
+</schools>

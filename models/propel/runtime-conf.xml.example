@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<propel>
+
+		<datasources default="getchabooks">
+
+			<datasource id="gbprod">
+				<adapter>mysql</adapter> <!-- sqlite, mysql, myssql, oracle, or pgsql -->
+				<connection>
+					<dsn>mysql:host=localhost;dbname=gbprod</dsn>
+					<user>user</user>
+					<password>password</password>
+				</connection>
+			</datasource>
+
+			<datasource id="gbdev">
+				<adapter>mysql</adapter>
+				<connection>
+					<dsn>mysql:host=localhost;dbname=gbdev</dsn>
+					<user>user</user>
+					<password>password</password>
+				</connection>
+			</datasource>
+
+		</datasources>
+
+	</propel>
+
+</config>

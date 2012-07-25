@@ -1,0 +1,280 @@
+@import "utils";
+@import "constants";
+
+html {
+  padding: 0;
+  margin: 0;
+  min-height: 100%;
+  @include gradient($gb-green, $gb-dark-green); }
+
+noscript {
+  font-size: 1.25em;
+  display: block;
+  margin-top: 1em;
+  color: #ff6666; }
+
+a {
+  text-decoration: none;
+  color: $link-color;
+  img {
+    border: 0; }
+  &:hover {
+    text-decoration: underline; } }
+
+body {
+  text-align: center;
+  text-rendering: optimizeLegibility;
+  font-family: "Georgia";
+  padding: 0;
+  margin: 0; }
+
+input, select, textarea {
+  border: 1px solid #eee; }
+
+select {
+  border: 1px solid black; }
+
+input:focus {
+  outline: none; }
+
+.welcome {
+  font-size: 1.2em; }
+
+.center {
+  float: center; }
+
+#main {
+  margin: auto;
+  width: 915px;
+  background: #fff;
+  min-height: 500px;
+  text-align: left;
+  color: #636363;
+  @include rounded(10px);
+  @include box-shadow(5px, #000); }
+
+#above {
+  width: 900px;
+  height: 50px;
+  margin: auto;
+  margin-top: 10px;
+  padding-top: 0;
+  text-align: left;
+  position: relative;
+  #logo {
+    color: #000;
+    overflow: visible;
+    float: left;
+    position: absolute;
+    bottom: -11px;
+    left: 0;
+    z-index: 300; }
+  h1 a img {
+    height: 50px;
+    margin-top: 10px;
+    overflow: visible;
+    z-index: 200 !important; } }
+
+#breadcrumbs {
+  font-size: 1.2em;
+  margin-bottom: 4px;
+  position: absolute;
+  right: 0;
+  bottom: 0; }
+
+#content > h1 {
+  color: #000; }
+
+#above a {
+  color: #000 !important;
+  &:hover, &:visited {
+    color: #000 !important; } }
+
+#top {
+  height: 96px;
+  margin: 0;
+  margin-bottom: 0px;
+  padding: 0;
+  padding-top: 10px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-bottom: 1px solid #ccb78a;
+  @include gradient($gb-light-orange, $gb-orange);
+  -webkit-border-top-left-radius: 10px;
+  -webkit-border-top-right-radius: 10px;
+  -moz-border-radius-topleft: 10px;
+  -moz-border-radius-topright: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  h1 {
+    margin: 0;
+    padding: 10px;
+    padding-top: 0;
+    color: black; } }
+
+#footer {
+  font-size: 1.2em;
+  position: relative;
+  bottom: -10px;
+  padding: 0px;
+  height: 50px;
+  margin-right: 0px;
+  -webkit-border-bottom-left-radius: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  -moz-border-radius-bottomleft: 10px;
+  -moz-border-radius-bottomright: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  height: 42px;
+  p {
+    margin: 0;
+    padding: 12px;
+    padding-left: 12px;
+    display: inline; }
+  a {
+    text-decoration: none;
+    color: #636363; }
+  span {
+    cursor: pointer; }
+  #icons {
+    float: right;
+    margin-top: -6px;
+    padding-bottom: 0px;
+    margin-right: 10px;
+    img {
+      width: 32px;
+      height: 32px; }
+    &:first-child {
+      margin-right: 8px; } } }
+
+#content {
+  padding: 10px;
+  padding-left: 18px;
+  padding-right: 18px;
+  min-height: 500px; }
+
+button {
+  font-family: "Georgia";
+  font-size: 1.2em;
+  text-align: center;
+  border: 0px;
+  padding: 5px;
+  margin-right: 10px;
+  background-color: $gb-green;
+  cursor: pointer;
+  text-shadow: 0px 1px 0px rgba(255,255,255,0.8);
+  @include rounded(3px);
+  @include box-shadow(1px, #000);
+  @include gradient($gb-button-green-top, $gb-button-green-bottom);
+  &:hover, &:active, &:focus {
+    @include gradient($gb-button-green-hover-top, $gb-button-green-hover-bottom); 
+    text-shadow: 0px 1px0px rgba(255,255,255,0.5);
+  }};
+
+.right {
+  float: right; }
+
+.left {
+  float: left; }
+
+/* TODO: move to results? */
+a.emailLink {
+  font-size: 1em !important; }
+
+/* About, Help */
+
+div {
+  &.textpage {
+    font-size: 1.2em;
+    line-height: 1.4em;
+    padding-left: 20px;
+    padding-right: 20px; }
+  &.about p {
+    padding-top: 10px; }
+  &.help {
+    p {
+      padding: 0;
+      padding-bottom: 15px;
+      margin: 0; }
+    strong {
+      margin-top: 20px;
+      display: block; } } }
+
+/* Share Buttons */
+
+/* TODO: move to results? */
+.shareButton {
+  text-align: center;
+  border: 0px;
+  margin-right: 10px;
+  cursor: pointer;
+  @include gradient($gb-button-green-top, $gb-button-green-bottom);
+  @include rounded(3px);
+  @include box-shadow(1px, #000);
+  text-shadow: 0px 1px 0px rgba(255,255,255,0.5);
+  width: 50px;
+  height: 22px;
+  font-family: Helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 23px;
+  font-weight: 600;
+  float: right;
+  margin: 0;
+  margin-left: 7px;
+  color: #000;
+  padding-top: 6px;
+  padding: 0;
+  position: relative;
+  padding-top: 0px;
+  margin-top: 2px;
+  padding-right: 1px;
+  text-rendering: auto;
+  &:hover {
+    @include gradient($gb-button-green-hover-top, $gb-button-green-hover-bottom); }
+  img {
+    vertical-align: middle;
+    position: absolute;
+    left: 3px;
+    top: 3px; } }
+
+.emailShare {
+  padding-left: 21px;
+  img {
+    width: 16px;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    left: 7px;
+    top: 5px; } }
+
+/* Touch hacks! */
+
+.touch input {
+  -webkit-appearance: none;
+  border: 1px solid #ddd; }
+
+pre {
+  white-space: pre-wrap;       /* css-3 */
+  white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+  white-space: -pre-wrap;      /* Opera 4-6 */
+  white-space: -o-pre-wrap;    /* Opera 7 */
+  word-wrap: break-word;       /* Internet Explorer 5.5+ */
+}
+
+/* Open Source! */
+#github {
+  float: right;
+  text-align: center;
+  iframe {
+    float: center;
+    margin-left: 74px; } }
+
+/* "Fork me on GitHub" ribbon. */
+#ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border: 0; }
+@media only screen and (max-width: 1024px) {
+  #ribbon {
+    display: none; } }

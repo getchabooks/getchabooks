@@ -1,0 +1,119 @@
+<?php
+
+define('SECTION_DELIMITER', ',');
+
+$siteName = 'Site';
+$siteUrl = 'Site.com';
+$fbPage = "http://www.facebook.com/site";
+$twitterPage = "http://www.twitter.com/site";
+$copyright = "Site";
+
+$dbUser = 'user';
+$prodDbName = 'gbprod';
+$prodDbPass = 'password';
+$devDbName = 'gbdev';
+$devDbPass = 'password';
+
+/**
+ * Extra HTML meta keywords
+ */
+$keywords = "getcha, books";
+
+/**
+ * Array of Vendor class names, used to determine for which vendors to
+ * look up prices, and in which order vendors will be displayed on the table.
+ *
+ * If the special 'Bookstore' vendor is included, it will be replaced with
+ * the school's specific vendor class, or, in ISBN mode, simply removed.
+ */
+$vendors = array(
+    'AmazonMarketplace',
+    'Half',
+    'AbeBooks',
+    'Chegg',
+    'Amazon',
+    'Bookstore'
+);
+
+$referrers = array(
+    'referral_tag' => 'amazon_tag'
+);
+
+$defaultTag = 'some_amazon_tag';
+
+$priceCacheTime = 300;  
+
+/**
+ * Maximum age of Schools, Campuses, Depts, Courses, and Sections, in seconds,
+ * before they will be re-spidered instead of gotten from the database cache.
+ */
+$maxBookstoreDataAge = 24*3600*20;
+
+
+
+/**
+ * The minimum difference that must exist between BDP and the best vendor combo
+ * for BDP to be listed in overview.  If either one of the differences is met, BDP
+ * is displayed.
+ */
+$bdpPercentThreshold = .05;
+$bdpAbsoluteThreshold = 5;
+
+
+/**
+ * The maximum number of non-Amazon (fastest), non-BDP combos to display on overview.
+ * Currently, if this is higher than 1, the copy doesn't fit.
+ */
+$maxOverviewCombos = 1;
+
+
+/**
+ * What to display for the amount saved for combos in overview.
+ * Possible values: 'percent' or 'absolute'.
+ */
+$overviewSavedDisplay = 'absolute';
+
+
+/**
+ * Do single book links for these vendors go to an Amazon cart/Chegg cart,
+ * (true), or do they go to the amazon marketplace listings page, amazon
+ * item detail page, and chegg item detail page, respectively (false).
+ */
+$marketplaceSingleCart = false;
+$amazonSingleCart = false;
+$cheggSingleCart = false;
+
+$mailerIsSmtp = true;
+$mailerHost = 'ssl://smtp.gmail.com:465';
+$mailerSmtpAuth = true;
+$mailerUsername = 'mailer@site.com';
+$mailerPassword = 'password';
+$mailerFrom = 'mailer@site.com';
+
+$prodAnalyticsId = "google_analytics_ua";
+$devAnalyticsId = "google_analytics_ua";
+
+define('PROXY1_URL', "proxymesh or something similar");
+define('PROXY1_AUTH', "auth:pw");
+define('PROXY2_URL', "trustedproxies or something similar");
+define('PROXY2_AUTH', "auth:pw");
+
+# http://www.abebooks.com/books/AffiliateProgram
+define('GOOGLE_AFFILIATE_ID', '21000000000294678');
+define('ABEBOOKS_CLIENTKEY', "abebooks client key");
+
+# https://affiliate-program.amazon.com
+define('AMAZON_ASSOCTAG', 'txtbks-20');
+define('AMAZON_PUBKEY', 'pubkey');
+define('AMAZON_SECKEY', 'seckey');
+define('AMAZON_REQUESTURL', 'http://ecs.amazonaws.com/onca/xml?Service=AWSECommerceService&Version=2009-10-01');
+
+# http://www.chegg.com/affiliatesignuppage
+define('CHEGG_KEY', "cheggkey");
+define('CHEGG_PASS', "cheggpass");
+define('CJ_SITE_PID', '3792488');
+
+# https://www.ebaypartnernetwork.com
+define('HALF_APPID', 'appid');
+define('HALF_PUBID', '5574918727');
+define('HALF_CAMPAIGNID', '5336719322');

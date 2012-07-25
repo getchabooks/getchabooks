@@ -1,0 +1,236 @@
+@import "constants";
+@import "utils";
+
+#top {
+  margin: 0;
+  height: 6px;
+  margin-bottom: 6px; }
+
+/* Action. The right side. */
+
+#actionWrapper {
+  margin-top: 21px;
+  margin-right: 10px;
+  float: right;
+  padding: 0px;
+  width: 382px; }
+
+#action {
+  border: 1px solid #CCC;
+  text-align: center;
+  max-height: 318px;
+  position: relative;
+  h2, p {
+    margin: 2px 10px 10px 10px; }
+  h2 {
+    padding-top: 6px; }
+  a {
+    text-decoration: none;
+    color: #636363; }
+  #go {
+    height: 320px;
+    button {
+      cursor: pointer; }
+    /* Automatic hiding. JS unhides. */
+    display: none; }
+  #drop {
+    /* Automatic hiding. JS unhides. */
+    display: none; }
+  option, input {
+    font-size: 1.1em;
+    width: 380px; } }
+
+#actionselect {
+  font-size: 1.1em;
+  width: 380px; }
+
+#action #change {
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  width: 380px;
+  color: #636363 !important;
+  margin: 10px 0 10px 0;
+  padding-bottom: 0;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline; } }
+
+#goISBN {
+  margin-top: 0.5em;
+  width: 380px;
+  margin-left: auto;
+  margin-right: auto; }
+
+/* Select a school. Covers everything involved in the selection. */
+
+$widthOfAutocomplete: 374px;
+$numberOfAutocompleteItems: 9;
+$heightOfAutocompleteItem: 24px;
+$verticalPaddingOfAutocompleteItem: 8px;
+$totalHeightOfAutocompleteItem: $heightOfAutocompleteItem + $verticalPaddingOfAutocompleteItem;
+
+#select {
+  -webkit-overflow-scrolling: touch;
+  #searchBox {
+    width: $widthOfAutocomplete;
+    font-size: 17px;
+    padding: 2px;
+    height: 24px; }
+  input:focus {
+    outline: none;
+    box-shadow: 0 0 11px #bbb;
+    -moz-box-shadow: 0 0 11px #bbb;
+    -webkit-box-shadow: 0 0 11px #bbb; }
+  .hover {
+    @include gradient($gb-cell-green-top, $gb-cell-green-bottom);
+    a {
+      color: #111; } }
+  ul {
+    height: $numberOfAutocompleteItems * $totalHeightOfAutocompleteItem;
+    max-height: $numberOfAutocompleteItems * $totalHeightOfAutocompleteItem;
+    overflow-y: auto;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    li {
+      padding: 0;
+      min-height: $heightOfAutocompleteItem;
+      line-height: $heightOfAutocompleteItem;
+      display: block;
+      a {
+        display: block;
+        height: 100%;
+        width: $widthOfAutocomplete - 10px;
+        padding: 5px 4px 3px 6px;
+        color: #636363; }
+      a:active, &.special {
+        @include gradient($gb-cell-orange-top, $gb-cell-orange-bottom);
+        color: #111; }
+      &:hover {
+        cursor: pointer; }
+      &.error {
+        height: 255px !important;
+        background: #FFF;
+        color: #636363;
+        text-align: center;
+        font-size: 15pt;
+        line-height: 32px;
+        a {
+          padding-top: 1.4em;
+          color: #636363; }
+        p {
+          margin: 0;
+          padding: 0;
+          margin-bottom: 1em; }
+        .title { font-weight: bold; }
+        .link {
+          color: $link-color;
+          text-decoration: underline;
+          margin-bottom: 0; }}}}}
+
+.touch #select {
+  .hover {
+    background: #fff }
+  ul li {
+    min-height: 1.125*$totalHeightOfAutocompleteItem; } }
+
+/* iOS */
+
+option, input, select {
+  font-size: 1.1em;
+  width: 370px; }
+
+button#getStarted {
+  margin-top: 60px;
+  font-size: 1.3em;
+  padding: 15px; }
+
+/* Introduction. The left side. */
+
+#introduction {
+  margin-left: 10px;
+  h1 {
+    margin-bottom: 0;
+    font-size: 1.7em; }
+  h2 {
+    font-size: 1.5em;
+    margin-top: 0;
+    font-weight: normal; }
+  ol {
+    width: 420px;
+    li {
+      font-size: 1.25em;
+      font-weight: bold;
+      p {
+        margin-left: 4px;
+        line-height: 1.4em;
+        font-weight: normal;
+        margin: 0;
+        padding: 0.5em 0; } } }
+  > p {
+    font-size: 1.25em;
+    margin: 0; } }
+
+#redirect {
+  margin-left: 10px;
+  h1 {
+    font-size: 1.7em; } }
+
+#status {
+  padding: 1em;
+  p {
+    font-size: 17pt;
+    line-height: 34px; }
+  .title {
+    font-weight: bold; } }
+
+#isbn_status {
+  padding: 0.5em 0.7em 0.5em 0.7em;
+  text-align: left;
+  p {
+    font-size: 13pt;
+    line-height: 28px; 
+    margin-bottom: 1.3em;
+    &:last-child { margin-bottom: 0; } }
+
+  .title {
+    font-weight: bold;
+    font-size: 17pt;
+    line-height: 32px;
+    margin-bottom: .7em;
+  }
+  .check {
+    margin-top: .5em;
+  }
+}
+
+#list {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch; }
+
+/* Touch hacks! */
+
+.touch {
+  #main {
+    min-height: 559px; }
+  #content {
+    min-height: 474px;
+    padding-top: 10px; } }
+
+/* Unsupported Internet Explorer! */
+
+#ie_message {
+  display: none; }
+
+.ie {
+  #ie_message {
+    display: block !important;
+    width: 580px;
+    font-size: 1.4em;
+    margin: 150px auto; }
+  #introduction, #actionWrapper {
+    display: none; } }
+

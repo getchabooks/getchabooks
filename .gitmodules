@@ -1,0 +1,27 @@
+[submodule "vendor/phpmailer"]
+	path = vendor/phpmailer
+	url = git@github.com:mwhite/phpmailer.git
+[submodule "vendor/minify"]
+	path = vendor/minify
+	url = https://github.com/mrclay/minify.git
+[submodule "vendor/php-memcached-wrapper"]
+	path = vendor/php-memcached-wrapper
+	url = git://github.com/mwhite/php-memcached-wrapper.git
+[submodule "vendor/Slim"]
+	path = vendor/Slim
+	url = git://github.com/codeguy/Slim.git
+[submodule "vendor/Slim-Extras"]
+	path = vendor/Slim-Extras
+	url = git://github.com/codeguy/Slim-Extras.git
+[submodule "vendor/php-isbn"]
+	path = vendor/php-isbn
+	url = https://github.com/mwhite/php-isbn.git
+[submodule "vendor/random-uagent"]
+	path = vendor/random-uagent
+	url = git@github.com:mwhite/random-uagent.git
+[submodule "vendor/sass"]
+	path = vendor/sass
+	url = git://github.com/nex3/sass.git
+[submodule "vendor/uglifyjs"]
+	path = vendor/uglifyjs
+	url = git://github.com/mishoo/UglifyJS.git

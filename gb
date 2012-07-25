@@ -1,0 +1,42 @@
+#!/usr/bin/php
+<?php
+
+/**
+ * Single point of entry for command-line scripts.
+ */
+
+$wd = exec('pwd');
+if (!preg_match("/^(.+\/gb(\/production)?)/", $wd, $matches)) {
+    echo "$wd is not a GetchaBooks installation.\n";
+    exit();
+}
+
+$scriptPath = "{$matches[1]}/scripts/";
+
+if ($argc == 1) {
+    echo "Available commands:\n\n";
+    foreach (scandir($scriptPath) as $file) {
+        if ($file != "." && $file != "..") {
+            $parts = explode('.', $file);
+            echo "  " . $parts[0] . "\n";
+        }
+    }
+} else {
+
+    $script = $argv[1];
+    $argv = array_slice($argv, 1);
+    $argc--;
+
+    if (file_exists("$scriptPath$script.php")) {
+        require_once 'init.php';
+        define('BASE_URL', null);
+        define('MOBILE_DEVICE', null);
+        $debug = $verbose = true;
+
+        require "$scriptPath$script.php";
+    } else if (file_exists("$scriptPath$script.sh")) {
+        system("$scriptPath$script.sh " . implode(' ', $argv));
+    } else {
+        echo "Unknown command: $script\n"; 
+    }
+}

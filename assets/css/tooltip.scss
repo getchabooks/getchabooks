@@ -1,0 +1,125 @@
+@import "constants";
+@import "utils";
+
+div.tooltip {
+  /** Generic tooltip CSS */
+  position: absolute;
+  height: auto;
+  width: 0px;
+
+  $tail-color: #000;
+  $tail-size: 12px;
+
+  div.tail {
+    position: absolute;
+    padding: 0;
+    width: 0px;
+    height: 0px;
+    border: $tail-size solid transparent; }
+    
+  /* The lol-iest of hacks.
+   * If we just give .tail a box-shadow, the box extends beyond the triangle.
+   * By creating a smaller box within the tail and giving *that* a shadow, we get the shadow we want. */
+  div.shadow {
+    width: 0px; 
+    height: 10px; 
+    @include box-shadow(12px, #000); 
+    position:absolute; }
+    
+  &.right .tail {
+    border-left: none;
+    border-right-color: $tail-color;
+    right: 100%;
+    top: 50%; 
+    margin-top: -$tail-size; 
+    
+    .shadow {
+      top: -5px;
+      left: 4px } } 
+    
+  &.left .tail {
+    border-right: none;
+    border-left-color: $tail-color;
+    left: 100%;
+    top: 50%;
+    margin-top: -$tail-size; 
+    
+    .shadow {
+      top: -5px;
+      right: 4px } } 
+    
+  &.top .tail {
+    border-bottom: none;
+    border-top-color: $tail-color;
+    top: 100%;
+    left: 50%;
+    margin-left: -$tail-size; 
+    
+    .shadow {
+      left: -5px; 
+      bottom: 4px;  } }
+    
+  &.bottom .tail {
+    border-top: none;
+    border-bottom-color: $tail-color;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -$tail-size; 
+    
+    .shadow {
+      left: -5px; 
+      top: 4px;  } }
+    
+  /** GB-specific CSS */
+  background: #000;
+  padding: 5px;
+  color: #FFF;
+  line-height: 1.4em;
+  z-index: 300;
+
+  font-family: "Helvetica", sans-serif;
+
+  @include box-shadow(7px, #000);
+  @include rounded(5px);
+
+  h1, h2, p, div {
+    color: #fff;
+    text-align: left;
+    padding-left: 10px;  }
+
+  h1 {
+    margin-top: 10px;
+    line-height: 1.1em; }
+
+  h2 {
+    padding-bottom:0.5em;
+    margin-bottom: 0; 
+    &.isbn { padding-bottom: 0.8em; } }
+
+  p {
+    margin-top: .5em;
+    line-height: 1.5em; }
+
+  .instructions {
+    padding-left: 0;
+    line-height: 13pt;
+    font-size: 13pt; }
+
+  img {
+    margin: 10px 10px 0 10px;
+    max-width: 200px;
+    max-height: 240px;
+    margin-left: 1em;
+    border: 1px solid #444; 
+    float: right; }
+
+  span.money {
+    font-weight: bold;
+    color: #D0FDC1; }
+
+  .orange {
+    color: $gb-orange; 
+    font-weight:bold; }
+
+  .green {
+    color: $gb-green; } }

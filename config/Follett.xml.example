@@ -1,0 +1,12 @@
+<schools>
+	<school>
+		<Name>University of Florida</Name>
+		<ShortName>University of Florida</ShortName>
+		<Slug>ufl</Slug>
+		<State>FL</State>
+		<Zip></Zip>
+		<LocalTax>6.70</LocalTax>
+		<Subdomain>ufl</Subdomain>
+		<BId>10901</BId>
+	</school>
+</schools>

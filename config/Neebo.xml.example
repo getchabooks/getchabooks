@@ -1,0 +1,12 @@
+<schools>
+	<school>
+		<Name>Aquinas College</Name>
+		<ShortName>Aquinas College</ShortName>
+		<Slug>AC</Slug>
+		<State></State>
+		<Zip></Zip>
+		<LocalTax>6.25</LocalTax>
+		<Subdomain>AC</Subdomain>
+		<BId>AC</BId>
+	</school>
+</schools>

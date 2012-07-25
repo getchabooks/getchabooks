@@ -1,0 +1,31 @@
+@import "utils";
+@import "constants";
+
+/* IE9 came a long way in supporting standards, but sometimes, things look a
+ * little funny. This file contains adjustments to help.
+ */
+
+#main {
+  box-shadow: none;
+  border: 2px solid #aaa;
+  border-radius: 0px; }
+
+button, .shareButton, #lightbox button {
+  box-shadow: none;
+  @include rounded(0px);
+}
+
+button, .shareButton {
+  border: 1px solid #aaa;
+}
+
+#above #logo {
+  bottom: -12px !important; }
+
+#lightbox button {
+  border: 1px solid #333;
+}
+
+#autowrapper {
+  margin-top: 0px;
+}

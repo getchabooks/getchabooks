@@ -1,0 +1,331 @@
+@import "utils";
+@import "constants";
+
+#top {
+  // overwrites value from common.css
+  height: 110px;
+  position: relative;
+  color: #535353;
+  text-shadow: 0px 1px 1px rgba(255, 255, 255, 0.4);
+  button {
+    margin-top: 7px;
+  }
+}
+
+input {
+  border: 1px solid #ccc !important;
+  &:focus {
+    box-shadow: 0 0 11px #999;
+    -moz-box-shadow: 0 0 11px #999;
+    -webkit-box-shadow: 0 0 11px #999; }
+}
+
+#instructions {
+  position: absolute;
+  top: 0;
+  left: 0;
+  p {
+    padding: 0em .5em 0 1em;
+    font-size: 1.3em;
+  }
+  &:first-child {
+    margin-bottom: 0;
+  }
+  p.add {
+    margin-bottom: 0; }
+  p.extra {
+    margin-top: 12px;
+    margin-bottom: 0; }
+}
+
+#isbnhelp {
+  width: 200px; }
+
+/* Automagic hide. */
+
+#course, #section, #search, #browse, #go {
+  display: none; }
+
+.isbn > #search {
+  display: block;
+}
+
+#content {
+  padding-top: 20px;
+  h1 {
+    margin: 0;
+    padding: 0; } }
+
+#browse {
+  width: 900px;
+  float: center;
+  margin: auto;
+  padding-top: 56px;
+  margin-left: 6px;
+  select {
+    margin-bottom: 4px;
+    display: inline;
+    font-size: 1.1em; } }
+
+#department {
+  width: 335px; }
+
+#course {
+  width: 335px; }
+
+#section {
+  width: 204px; }
+
+#campusWrapper select {
+  margin-bottom: 4px;
+  display: inline;
+  font-size: 1.1em; }
+
+#termWrapper select {
+  margin-bottom: 4px;
+  display: inline;
+  font-size: 1.1em; }
+
+.addError {
+  padding-top: 12px;
+  margin-left: 40px; }
+
+#go {
+  float: right;
+  font-size: 0.7em;
+  margin: 0;
+  vertical-align: top;
+  padding-left: 20px;
+  padding-right: 20px; }
+
+img.delete {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -12px;
+  margin-right: 4px;
+  vertical-align: middle;
+  cursor: pointer; }
+
+option, input {
+  font-size: 1em; }
+
+/* BROWSE*/
+
+h2 {
+  margin-bottom: 5px;
+  font-weight: normal; }
+
+.select {
+  height: 50px;
+  margin-left: 28px; }
+
+/* AUTOCOMPLETE */
+
+$widthOfAutocomplete: 570px;
+$searchBoxPaddingVertical: 1px;
+$searchBoxPaddingHorizontal: 3px;
+$heightOfAutocompleteItem: 24px;
+$verticalPaddingOfAutocompleteItem: 8px;
+$totalHeightOfAutocompleteItem: $heightOfAutocompleteItem + $verticalPaddingOfAutocompleteItem;
+$numberOfAutocompleteItems: 12;
+$heightOfAutocompleteResults: ($totalHeightOfAutocompleteItem * $numberOfAutocompleteItems);
+
+#search {
+  padding-top: 0px;
+  width: $widthOfAutocomplete;
+  margin: auto; }
+
+#searchBox {
+  position: relative;
+  z-index: 4545;
+  height: 22px;
+  line-height: 22px;
+  margin: 0;
+  margin-top: 43px;
+  width: $widthOfAutocomplete - 4px;
+  font-size: 17px;
+  padding: $searchBoxPaddingVertical 3px;
+  padding-left: 3px; }
+
+.isbn #searchBox {
+  margin-top: 20px; }
+
+#autowrapper {
+  margin: 0;
+  margin-top: 1px;
+  margin-left: 1px; /* This magical pixel makes the wrapper line up with the search box. */
+  position: static;
+  display: block;
+  width: $widthOfAutocomplete; }
+
+#autocompleteResults {
+  -webkit-overflow-scrolling: touch;
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: $heightOfAutocompleteResults;
+  @include box-shadow(5px, #000);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 0;
+  margin: 0;
+  width: $widthOfAutocomplete + 2px;
+  background: #fff;
+  z-index: 500;
+  list-style-type: none;
+  li {
+    cursor: pointer;
+    margin-left: 0px;
+    display: block;
+    padding: 5px 4px 3px 4px;
+    height: $heightOfAutocompleteItem;
+    line-height: $heightOfAutocompleteItem;
+    font-size: 1em;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    &.error, &.error:first-child:last-child, &.error.hover {
+      cursor: default;
+      @include gradient($gb-cell-red-top, $gb-cell-red-bottom);
+      height: 2*$heightOfAutocompleteItem;
+      line-height: $heightOfAutocompleteItem;
+      color: $gb-text-gray; }
+    &.error.inProgress, &.error.inProgress.hover, &.error.inProgress:first-child:last-child {
+      @include gradient($gb-cell-yellow-top, $gb-cell-yellow-bottom); } 
+    &:first-child:last-child {
+      @include gradient($gb-cell-green-top, $gb-cell-green-bottom);
+      color: $gb-text-black;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px; } 
+    &.hover {
+      @include gradient($gb-cell-green-top, $gb-cell-green-bottom);
+      color: $gb-text-black; } }
+  &.isbn li {
+    height: 2*$heightOfAutocompleteItem;
+    line-height: $heightOfAutocompleteItem;
+    color: $gb-text-black;
+    border-top: 1px solid #CCC;
+    &:first-child {
+      border-top: none; }
+    .title {
+      font-weight: bold; } } }
+
+/* COURSE LIST */
+
+#items {
+  margin-top: 1em;
+  padding: 0;
+  margin-bottom: 1.5em;
+  .item {
+    margin: 0;
+    padding: 0;
+    padding-left: 70px;
+    margin-bottom: 1.4em;
+    position: relative;
+    width: auto;
+    &:hover {
+      .removeItem {
+        display: block; } }
+    h2 {
+      padding: 0;
+      margin: 0; } } }
+
+.touch .removeItem {
+  display: block; }
+
+.inline {
+  display: inline; }
+
+.removeItem {
+  display: none;
+  margin: 0;
+  padding: 0;
+  width: 45px;
+  height: 45px;
+  position: absolute;
+  z-index: 3000;
+  cursor: pointer;
+  display: none;
+  top: 0px;
+  left: 10px; }
+
+#noItems {
+  font-size: 1.4em;
+  font-style: italic;
+  margin-left: 60px;
+  margin-top: 20px; }
+
+#fbfanpage {
+  float: right;
+  height: 180px; }
+
+/* Touch hacks! */
+
+.touch {
+  #main {
+    min-height: 490px; }
+  #content {
+    min-height: 380px; } }
+
+/* Multi-campus! */
+
+#topWrapper button {
+  position: relative;
+  float: right;
+  margin-right: 17px;
+  z-index: 1000; /* Without this, the text div extends over the button, rendering it non-interactive */
+  &:first-child {
+    margin-right: 9px; } }
+
+// TODO: Stop manually setting these widths.
+button#campusToggle {
+  width: 172px; }
+
+button#termToggle {
+  width: 172px; }
+
+button#toggle {
+  width: 240px; }
+
+#isbnhelp {
+  position: relative;
+  float: right; }
+
+#campusName {
+  font-weight: bold;
+  margin-right: 0.6em; }
+
+#termName {
+  font-weight: bold; }
+
+#campusWrapper {
+  width: 100%;
+  text-align: center;
+  h2 {
+    padding-bottom: 10px;
+    /*font-weight: bold;*/
+    color: #636363; }
+  select {
+    width: 335px;
+    margin-left: 280px; } }
+
+#termWrapper {
+  width: 100%;
+  text-align: center;
+  h2 {
+    padding-bottom: 10px;
+    color: #636363; }
+  select {
+    width: 335px;
+    margin-left: 280px; } }
+
+#top.tall {
+  height: 128px;
+  table {
+    margin-top: 24px; }
+  p#instructions {
+    line-height: 1.25em; }
+  #search {
+    padding-top: 28px; }
+}

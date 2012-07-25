@@ -1,0 +1,28 @@
+@mixin rounded($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin gradient($top, $bottom) {
+  background-color: $top;
+  background-image: -webkit-gradient(linear, left top, left bottom, from($top),to($bottom));
+  background-image: -webkit-linear-gradient(top, $top, $bottom);
+  background-image: -moz-linear-gradient(top, $top, $bottom);
+  background-image: -o-linear-gradient(top, $top, $bottom);
+  background-image: -ms-linear-gradient(top, $top, $bottom);
+  background-image: linear-gradient(top, $top, $bottom);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,StartColorStr='#{$top}', EndColorStr='#{$bottom}');
+}
+
+@mixin box-shadow($radius, $color) {
+  box-shadow: 0px 0px $radius $color;
+  -webkit-box-shadow: 0px 0px $radius $color;
+  -moz-box-shadow: 0px 0px $radius $color;
+}
+
+@mixin scale($factor) {
+  -webkit-transform: scale($factor);
+  -moz-transform: scale($factor);
+  transform: scale($factor);
+}
