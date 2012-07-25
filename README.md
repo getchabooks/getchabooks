@@ -137,12 +137,11 @@ of three interfaces:
 - A `Bookstore`, which is also a `Vendor`, represents an online college
   bookstore system, with a fully de-coupled interface for fetching data from the
   School->Campus->Term->Department->Course->Section->Books hierarchy.
-  GetchaBooks currently supports BNCollege and Follett.
 
   GetchaBooks currently supports BNCollege and Follett bookstores, with
   implementations for four other bookstore chains based on TextYard.com's
   [Open-Textbooks](https://github.com/bsgreenb/Open-Textbooks) library in the
-  wings.
+  works.
 
 - Bookstore websites use department abbreviations and course and section numbers
   for selecting courses, which is difficult if you don't remember your course or
