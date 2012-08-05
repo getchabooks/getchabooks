@@ -95,11 +95,14 @@ class SelectionController extends PageController {
 		$this->overrideAnalyticsPageUrl("selection/" . ($isbnMode ? "isbn" : "course"));
 
         $this->setTitle( $school ? 'Select Courses' : 'Enter Books' );
-        $this->addMetaTag( 'description', "Textbooks made easy. "
-            . ($school ? "Just tell us your " . $school->getShortName() . "courses, "
-            . "and we'll look up your books and find the cheapest prices."
-            : "Input your books by ISBN and we'll do the comparison"
-            . " shopping for you."));       
+        if ($school) {
+            $description = "Just tell us your " . $school->getShortName() . " courses, "
+                           . "and we'll look up your books and find the cheapest prices.";
+        } else {
+            $description = "Input your books by ISBN and we'll do "
+                           . "the comparison shopping for you.";
+        }
+        $this->addMetaTag( 'description', "Textbooks made easy. $description" );
 
         $this->renderPage('selection', array(
             'breadcrumbFormat' => 'selection',

@@ -57,18 +57,11 @@ $app->hook('slim.before', function () use ($app) {
     define('MOBILE_DEVICE', strpos(strtolower($request->getUserAgent()), 'mobile') !== false);
 
     // remove extra slashes
-    $path = $app->request()->getPath();
+    $path = $request->getPath();
     $newPath = preg_replace("#/{2,}#", '/', $path);
 
     if ($path != $newPath) {
-        $app->redirect($newPath, 300);
-    }
-
-    // remove subdomains
-    $host = $app->request()->getHost();
-    preg_match("/[^.]+\.[^.]+$/", $host, $match);
-    if ($match[0] != $host) {
-        $app->redirect(str_replace($host, $match[1], $app->request()->getUrl() . $path), 300);
+        $app->redirect($request->getUrl() . $newPath, 300);
     }
 
     // process referrer tag
