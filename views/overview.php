@@ -153,7 +153,7 @@ if ( !$anyBooks && (!$results->shis || $results->shis->count() == 0) ) {
             $books = ($combo->numItems > 1 ? "All {$combo->numItems} books" : "Your one book");
             $vendorName = $combo->vendorName == 'Bookstore' ? 'the bookstore' : $combo->vendorName;
             $url = $app->urlFor('redirect', array(
-                'url' => $combo->url,
+                'url' => urlencode($combo->url),
                 'type' => 'bundle',
                 'vendor' => $combo->vendorName
             ));
