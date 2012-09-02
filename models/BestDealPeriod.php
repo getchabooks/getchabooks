@@ -178,10 +178,10 @@ class BestDealPeriod extends PriceSet {
 
             if ($bookstoreMulti == 'false')  {
                 $url = $app->urlFor('redirect', array(
-                    'url' => urlencode($combo->url),
+                    'url' => '',
                     'type' =>  'bdp',
                     'vendor' => $combo->vendorName
-                ));
+                )) . $combo->url;
                 $label = $combo->vendorName == 'Chegg' ? 'Rent' : 'Buy';
 
                 $m .= "<button data-url=$url>$label</button></p>";
@@ -193,10 +193,10 @@ class BestDealPeriod extends PriceSet {
                     $num = ordinal($i + 1);
 
                     $url = $app->urlFor('redirect', array(
-                        'url' => urlencode($price->url),
+                        'url' => '',
                         'type' => 'bdp',
                         'vendor' => $price->vendorName
-                    ));
+                    )) . $price->url;
 
                     $m .= "<p><span class=aBookstoreBook>$num Book</span>"
                            . "<button data-url=$url>Buy</button></p>";
