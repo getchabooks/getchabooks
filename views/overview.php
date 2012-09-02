@@ -153,10 +153,10 @@ if ( !$anyBooks && (!$results->shis || $results->shis->count() == 0) ) {
             $books = ($combo->numItems > 1 ? "All {$combo->numItems} books" : "Your one book");
             $vendorName = $combo->vendorName == 'Bookstore' ? 'the bookstore' : $combo->vendorName;
             $url = $app->urlFor('redirect', array(
-                'url' => urlencode($combo->url),
+                'url' => '',
                 'type' => 'bundle',
                 'vendor' => $combo->vendorName
-            ));
+            )) . $combo->url;
 
             $confirm = "<p class='lightboxHeader first centered'>$books from $vendorName.</a></p>";
 
