@@ -9,7 +9,7 @@
 <div id="github">
     <a href="https://github.com/getchabooks/getchabooks"><img style="" src="<?= BASE_URL ?>images/octocat.png" width="200px" height="200px"></a>
 <br>
-    <iframe src="http://markdotto.github.com/github-buttons/github-btn.html?user=getchabooks&repo=getchabooks&type=watch&count=false&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170px" height="30px"></iframe>
+    <iframe src="http://ghbtns.com/github-btn.html?user=getchabooks&repo=getchabooks&type=watch&count=false&size=large" allowtransparency="true" frameborder="0" scrolling="0" width="170px" height="30px"></iframe>
 </div>
 <p>That being said, the three of us have graduated. We spent a lot of time and effort bringing GetchaBooks to as many schools as we could, but now that we're no longer students we don't have as much time to focus on expansion.</p>
 
