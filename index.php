@@ -61,7 +61,7 @@ $app->hook('slim.before', function () use ($app) {
     $newPath = preg_replace("#/{2,}#", '/', $path);
 
     if ($path != $newPath) {
-        $app->redirect($request->getUrl() . $newPath, 300);
+        $app->redirect($request->getUrl() . $newPath, 301);
     }
 
     // process referrer tag

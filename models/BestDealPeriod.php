@@ -178,7 +178,7 @@ class BestDealPeriod extends PriceSet {
 
             if ($bookstoreMulti == 'false')  {
                 $url = $app->urlFor('redirect', array(
-                    'url' => $combo->url,
+                    'url' => urlencode($combo->url),
                     'type' =>  'bdp',
                     'vendor' => $combo->vendorName
                 ));
@@ -193,7 +193,7 @@ class BestDealPeriod extends PriceSet {
                     $num = ordinal($i + 1);
 
                     $url = $app->urlFor('redirect', array(
-                        'url' => $price->url,
+                        'url' => urlencode($price->url),
                         'type' => 'bdp',
                         'vendor' => $price->vendorName
                     ));
