@@ -205,7 +205,6 @@ for the opportunity to learn from their work.
 Authors
 -------
 
-- Mike White (<m@mwhite.info>; https://www.gittip.com/mwhite/)
 - Ricky Mondello (<rmondello@gmail.com>)
 - Mike Walker (<michael.scott.walker@gmail.com>)
-
+- Mike White (<m@mwhite.info>; https://www.gittip.com/mwhite/)
