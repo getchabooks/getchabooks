@@ -8,9 +8,9 @@ http://getchabooks.com/open-source.
 
 GetchaBooks is licensed under the MIT License.  We hope you'll use the code to
 create your own version of GetchaBooks at your school, as long as you use
-a different name and different branding. We'll maintain GetchaBooks.com for the
-foreseeable future and we will gladly accept pull requests that fix bugs or add
-new functionality.
+a different name and different branding. GetchaBooks.com is no longer being
+actively developed, but we will still gladly accept pull requests that fix bugs or 
+add new functionality.
 
 Features
 --------
