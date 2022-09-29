@@ -169,7 +169,7 @@ class Results {
                 $this->shis->where('Section.CampusSlug = ?', $this->campusSlug);
             }
 
-            $this->shis = $this->shis                                             // 1 query
+            $this->shis = $this->shis                                             
                 ->where('Section.TermSlug = ?', $this->termSlug)
                 ->where('Section.Slug IN ?', $this->sectionSlugs)
                 ->where('SectionHasItem.RequiredStatus > 0')
